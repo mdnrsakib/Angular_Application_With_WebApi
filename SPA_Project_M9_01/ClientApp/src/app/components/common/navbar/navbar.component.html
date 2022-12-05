@@ -1,0 +1,39 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+     
+      [opened]="false">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['/home']"><mat-icon class="link-icon">
+        house
+        </mat-icon>Home</a>
+      <a mat-list-item [routerLink]="['/travelagents']"><mat-icon class="link-icon">assignment_ind</mat-icon>Agents</a>
+      <a mat-list-item [routerLink]="['/tourpackages']"><mat-icon class="link-icon"><span class="material-symbols-outlined">
+        local_post_office
+        </span></mat-icon>Packages</a>
+      <a mat-list-item [routerLink]="['/packagefeatures']"><mat-icon class="link-icon"><span class="material-symbols-outlined">
+        featured_play_list
+        </span></mat-icon>Features</a>
+      <a mat-list-item [routerLink]="['/tourist']"><mat-icon class="link-icon"><span class="material-symbols-outlined">
+        family_restroom
+        </span></mat-icon>Tourists</a>
+      
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+       >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>ClientApp</span>
+    </mat-toolbar>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

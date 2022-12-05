@@ -1,0 +1,54 @@
+<mat-card class="mat-elevation-z3">
+    <mat-card-header>
+
+        <img mat-card-avatar src="../../../../assets/magnet-svgrepo-com.svg" />
+
+        <mat-card-title>Package Features</mat-card-title>
+        <mat-card-subtitle>List of Features</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="right">
+            <a mat-mini-fab [routerLink]="['/packagefeature-create']">
+                <mat-icon>add</mat-icon>
+            </a>
+        </div>
+        <mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="packageName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Package Name</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.packageName}}</mat-cell>
+
+            </ng-container>
+            <ng-container matColumnDef="transportMode">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Transpor tMode</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{getTransPortMode(element.transportMode)}}</mat-cell>
+
+            </ng-container>
+
+            <ng-container matColumnDef="hotelBooking">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Hotel Booking</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.hotelBooking}}</mat-cell>
+
+            </ng-container>
+            <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.status ? 'Yes': 'No'}}</mat-cell>
+
+            </ng-container>
+            <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>...</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <a [routerLink]="['/packagefeature-edit', element.packageFeatureId]">
+                        <mat-icon>edit</mat-icon>
+                    </a>
+                    <button [disabled]="!element.canDelete" mat-icon-button (click)="confirmDelete(element)"><mat-icon>delete</mat-icon></button>
+                </mat-cell>
+
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="columnList"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: columnList;"></mat-row>
+
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20, 40]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+
+    </mat-card-content>
+</mat-card>

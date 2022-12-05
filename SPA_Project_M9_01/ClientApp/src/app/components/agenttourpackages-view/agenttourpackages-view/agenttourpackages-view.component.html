@@ -1,0 +1,52 @@
+<mat-card class="mat-elevation-z3">
+    <mat-card-header>
+
+        <img mat-card-avatar src="../../../../assets/package-svgrepo.svg" />
+
+        <mat-card-title>Agent Tour Packages</mat-card-title>
+        <mat-card-subtitle>Agent and Packages</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <div *ngIf="travelagent" class="wrap">
+            <div class="row">
+                <mat-label>Agent Name</mat-label>
+                <div>{{travelagent.agentName}}</div>
+            </div>
+            <div class="row">
+                <mat-label>E-mail</mat-label>
+                <div>{{travelagent.email}}</div>
+            </div>
+            <div class="row">
+                <mat-label>Address</mat-label>
+                <div>{{travelagent.agentAddress}}</div>
+            </div>
+        </div>
+        <div class="wrap">
+            <h3>Tour Packages</h3>
+            <mat-table [dataSource]="dataSource">
+                <ng-container matColumnDef="tourPackage">
+                    <mat-header-cell *matHeaderCellDef>Tour Package</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{element.tourPackages.packageName}}</mat-cell>
+
+                </ng-container>
+                <ng-container matColumnDef="costPerPerson">
+                    <mat-header-cell *matHeaderCellDef>Cost Per Person</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{element.tourPackages.costPerPerson}}</mat-cell>
+
+                </ng-container>
+
+                <ng-container matColumnDef="tourTime">
+                    <mat-header-cell *matHeaderCellDef>Tour Time</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{element.tourPackages.tourTime}}</mat-cell>
+
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+
+            </mat-table>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <a mat-flat-button [routerLink]="['/travelagents']">Back to list</a>
+    </mat-card-actions>
+</mat-card>
